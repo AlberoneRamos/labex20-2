@@ -34,7 +34,8 @@ query = '''
         forks {
           totalCount
         },
-        url
+        url,
+        isFork
       }
     }
   }
@@ -45,6 +46,6 @@ filename = 'output.json'
 nodes = runQuery(query)['data']['user']['repositories']['nodes']
 print(nodes)
 with open('output.json', 'w') as file:
-  json.dump([node for node in nodes if node['primaryLanguage'] is not None and node['primaryLanguage']['name'] == 'Python'], file)
+  json.dump([node for node in nodes if node['primaryLanguage'] is not None and node['primaryLanguage']['name'] == 'Python' and node['isFork'] != True], file)
 
 print('Written to file output.json')
