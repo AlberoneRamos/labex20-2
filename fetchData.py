@@ -24,10 +24,13 @@ query = '''
         primaryLanguage {
           name
         },
-        stargazers {
+        stargazers(orderBy: {field: STARRED_AT, direction: DESC}) {
           totalCount
         },
         watchers {
+          totalCount
+        },
+        releases {
           totalCount
         },
         createdAt,
