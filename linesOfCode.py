@@ -15,4 +15,6 @@ def getLinesOfCode(repo):
   else:
     return int(0)
 
-print([getLinesOfCode(repo) for repo in data])
+
+with open('output.json', 'w') as file:
+  json.dump([dict(repo, **{"linesOfCode": getLinesOfCode(repo)}) for repo in data], file)
