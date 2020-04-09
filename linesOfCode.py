@@ -1,6 +1,5 @@
 import os
 import json
-import pygount
 
 with open('output.json', 'r') as file:
   data = json.load(file)
